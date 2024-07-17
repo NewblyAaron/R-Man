@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-primary {
+        @apply relative inline-block appearance-none rounded-xl bg-indigo-600 py-4 px-6 text-white hover:bg-indigo-700
+    }
+
+    .btn-secondary {
+        @apply relative inline-block appearance-none rounded-xl bg-gray-600 py-4 px-6 text-white hover:bg-gray-700
+    }
+
+    .btn-danger {
+        @apply relative inline-block appearance-none rounded-xl bg-red-600 py-4 px-6 text-white hover:bg-red-700
+    }
+
+    .field {
+        @apply relative block w-full appearance-none rounded-xl
+    }
+}
+

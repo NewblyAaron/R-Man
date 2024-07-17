@@ -1,0 +1,25 @@
+<div class="rounded-md bg-white shadow">
+  <div class="p-4 border-b-2 border-gray-200 flex flex-row justify-between items-center">
+    <h3 class="text-xl font-medium"><%= @vehicle.name %> Bundle List</h3>
+
+    <div class="flex flex-row flex-wrap justify-end items-center space-x-4">
+      <%= link_to "Back to #{@vehicle.name}", @vehicle, class: "btn-secondary" %>
+      <%= link_to "New Vehicle Bundle", new_vehicle_bundle_path(vehicle_id: @vehicle.id), class: "btn-primary" %>
+    </div>
+  </div>
+
+  <div class="flex flex-row flex-wrap space-x-8 p-4">
+    <% if @vehicle_bundles.count > 0 %>
+      <% @vehicle_bundles.each do |vb| %>
+        <%= link_to(edit_vehicle_bundle_path(vehicle_id: @vehicle.id, id: vb.id), class: "rounded-lg hover:border-2 hover:border-sky-400") do %>
+          <%= render "bundles/bundle", bundle: vb.bundle %>
+          <div class="rounded-sm bg-sky-200 shadow float-right p-2">
+            x<%= vb.quantity %>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>You do not have any bundles in the vehicle...</p>
+    <% end %>
+  </div>
+</div>

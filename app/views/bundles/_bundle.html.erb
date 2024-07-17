@@ -1,0 +1,49 @@
+<!--
+<div id="<%= dom_id bundle %>">
+  <p>
+    <strong>Name:</strong>
+    <%= bundle.name %>
+  </p>
+
+  <p>
+    <strong>Items:</strong>
+    <div id="bundle_items">
+      <ul>
+        <% bundle.bundle_items.each do |bi| %>
+          <li>
+            <%= bi.item.name %> (x<%= bi.quantity %>)
+            <% if action_name == "show" %>
+              [<%= link_to "Edit", edit_bundle_item_path(bundle_id: bundle.id, id: bi.id) %> | <%= link_to "Delete", bundle_item_path(bundle_id: bundle.id, id: bi.id), data: { turbo_method: :delete } %>]
+            <% end %>
+          </li>
+        <% end %>
+        <% if action_name == "show" %>
+          <li><%= link_to "Add items...", new_bundle_item_path(@bundle) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </p>
+</div>
+-->
+
+<div id="<%= dom_id bundle %>" class="rounded-lg bg-gray-200 shadow max-w-xs">
+  <div class="p-2 border-b-1 border-black shadow">
+    <%= tag.h3 bundle.name, class: "text-lg font-medium" %>
+  </div>
+
+  <div class="p-2">
+    <div>
+      <h3 class="text-md font-medium">Items List</h3>
+      <ul class="list-none text-sm">
+        <% bundle.bundle_items.each do |bi| %>
+          <%= tag.li "#{bi.item.name} (x#{bi.quantity})" %> 
+        <% end %>
+      </ul>
+
+      <h3 class="text-md font-medium">Possible Bundle Amount</h3>
+      <ul class="list-none text-sm">
+        <%= tag.li "#{bundle.get_bundle_qty}" %>
+      </ul>
+    </div>
+  </div>
+</div>

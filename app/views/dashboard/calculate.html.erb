@@ -1,0 +1,36 @@
+<h1>calculation ting</h1>
+
+<div data-controller="calculate" data-calculate-url-value="<%= calc_bundle_path %>">
+  <div>
+    <div>
+      <%= label_tag "barangay" %>
+      <%= select_tag "barangay", options_for_select(Barangay.all.collect { |b| [b.name, b.id] }), data: { calculate_target: "barangay" } %>
+    </div>
+
+    <div>
+      <%= label_tag "bundle" %>
+      <%= select_tag "bundle", options_for_select(Bundle.all.collect { |b| [b.name, b.id] }), data: { calculate_target: "bundle" } %>
+    </div>
+
+    <%= button_tag "calc", data: { action: "click->calculate#calc" }, class: "btn-primary" %>
+  </div>
+
+  <div>
+    <%= turbo_frame_tag "calc-table" do %>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Current Stock</th>
+          <th>Needed Stock</th>
+          <th>Balance</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

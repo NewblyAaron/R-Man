@@ -1,0 +1,8 @@
+<%= render @item %>
+
+<div class="my-4">
+  <%= link_to "Edit this item", edit_item_path(@item), class: "btn-primary" %>
+  <%= link_to "Back to items", items_path, class: "btn-secondary" %>
+  <%= link_to "Destroy this item", @item, class: "btn-danger",
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete Item #{@item.name}?" } %>
+</div>

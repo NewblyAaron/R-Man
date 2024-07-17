@@ -1,0 +1,13 @@
+<div class="flex flex-row flex-wrap justify-between items-center">
+  <h1 class="text-2xl my-4">Editing bundle item</h1>
+  <div>
+    <%= link_to "Back to bundle item list", bundle_items_path(bundle_id: @bundle.id), class: "btn-secondary" %>
+    <%= link_to "Destroy this bundle item", bundle_item_path(bundle_id: @bundle.id, id: @bundle_item.id), class: "btn-danger",
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete Bundle Item #{@bundle_item.item.name}?" } %>
+  </div>
+</div>
+
+<div class="max-w-xl m-auto flex flex-col items-center justify-center">
+  <%= render "form", bundle: @bundle, bundle_item: @bundle_item %>
+</div>
+

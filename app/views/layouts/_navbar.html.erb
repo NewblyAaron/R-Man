@@ -1,0 +1,34 @@
+<nav class="bg-gray-800 w-full h-24 mb-32 overflow-visible shadow-md">
+  <div>
+    <%= link_to image_tag("rman_logo.png", class: "p-4 w-48 mt-4 ml-32 inline-block float-left bg-white rounded-full shadow"), root_path %>
+  </div>
+
+  <div class="h-full flex flex-row mr-32 items-center justify-end space-x-8">
+    <div>
+      <ul class="relative list-none flex flex-row flex-wrap space-x-4 text-white">
+        <li>
+          <%= link_to "Barangays", barangays_path %>
+        </li>
+        <li>
+          <%= link_to "Items", items_path %>
+        </li>
+        <li>
+          <%= link_to "Bundles", bundles_path %>
+        </li>
+        <li>
+          <%= link_to "Vehicles", vehicles_path %>
+        </li>
+        <li>
+          <%= link_to "Dispatch", dispatch_path %>
+        </li>
+        <li>
+          <%= link_to "Calculate", calculate_path  %>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <%= link_to "Log out", logout_path, class: "btn-danger my-auto", data: { turbo_method: :post } %>
+    </div>
+  </div>
+</nav>

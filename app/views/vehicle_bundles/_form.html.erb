@@ -1,0 +1,29 @@
+<%= form_with(model: vehicle_bundle) do |form| %>
+  <% if vehicle_bundle.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(vehicle_bundle.errors.count, "error") %> prohibited this bundle item from being saved:</h2>
+
+      <ul>
+        <% vehicle_bundle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= hidden_field_tag "vehicle_bundle[vehicle_id]", vehicle.id %>
+
+  <div class="mb-4">
+    <%= form.label :bundle_id, style: "display: block" %>
+    <%= form.select :bundle_id, Bundle.all.collect{ |s| [s.name, s.id]}, include_blank: true, selected: vehicle_bundle.bundle_id %>
+  </div>
+
+  <div class="mb-4">
+      <%= form.label :quantity %>
+    <%= form.number_field :quantity, class: "field" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn-primary float-right" %>
+  </div>
+<% end %>

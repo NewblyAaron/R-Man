@@ -1,0 +1,38 @@
+<div class="rounded-md bg-white shadow">
+  <div class="p-4 border-b-2 border-gray-200 flex flex-row justify-between items-center">
+    <h3 class="text-xl font-medium"><%= @barangay.name %> Purok List</h3>
+
+    <div class="flex flex-row flex-wrap justify-end items-center space-x-4">
+      <%= link_to "Back to #{@barangay.name}", barangay_path(@barangay), class: "btn-secondary" %>
+      <%= link_to "New Purok", new_barangay_purok_path(barangay_id: @barangay.id), class: "btn-primary" %>
+    </div>
+  </div>
+
+  <div class="flex flex-row flex-wrap space-x-8 p-4">
+    <% if @barangay.barangay_puroks.count > 0 %>
+      <table class="table-auto border-collapse border min-w-full text-left">
+        <thead>
+          <tr class="bg-gray-500 text-white">
+            <th>Purok Name</th>
+            <th>Family Count</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @barangay.barangay_puroks.each do |purok| %>
+            <tr class="hover:bg-gray-200">
+              <td>
+              <%= link_to purok.name, barangay_purok_path(barangay_id: @barangay.id, id: purok.id), class: "block" %>
+              </td>
+
+              <td>
+                <%= link_to purok.population, barangay_purok_path(barangay_id: @barangay.id, id: purok.id), class: "block" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>You do not have any puroks...</p>
+    <% end %>
+  </div>
+</div>

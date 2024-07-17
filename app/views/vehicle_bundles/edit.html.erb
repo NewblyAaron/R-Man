@@ -1,0 +1,15 @@
+<div class="flex flex-row flex-wrap justify-between items-center">
+  <h1 class="text-2xl my-4">Editing vehicle bundle</h1>
+  <div>
+    <%= link_to "Back to vehicle bundle list", vehicle_bundles_path(vehicle_id: @vehicle.id), class: "btn-secondary" %>
+    <%= link_to "Destroy this vehicle bundle", vehicle_bundle_path(vehicle_id: @vehicle.id, id: @vehicle_bundle.id), class: "btn-danger",
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete Vehicle Bundle #{@vehicle_bundle.bundle.name}?" } %>
+  </div>
+</div>
+
+<div class="max-w-xl m-auto flex flex-col items-center justify-center">
+  <%= render "form", vehicle: @vehicle, vehicle_bundle: @vehicle_bundle %>
+</div>
+
+
+

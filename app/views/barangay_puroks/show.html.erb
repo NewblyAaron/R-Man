@@ -1,0 +1,8 @@
+<%= render @purok %>
+
+<div class="my-4">
+  <%= link_to "Edit this purok", edit_barangay_purok_path(barangay_id: @barangay.id, id: @purok.id), class: "btn-primary" %>
+  <%= link_to "Back to purok list", barangay_puroks_path(barangay_id: @barangay), class: "btn-secondary" %>
+  <%= link_to "Destroy this purok", barangay_purok_path(barangay_id: @barangay.id, id: @purok.id), class: "btn-danger",
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete Purok #{@purok.name}?" } %>
+</div>

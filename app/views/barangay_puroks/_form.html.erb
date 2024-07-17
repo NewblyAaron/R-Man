@@ -1,0 +1,29 @@
+<%= form_with(model: barangay_purok) do |form| %>
+  <% if barangay_purok.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(barangay_purok.errors.count, "error") %> prohibited this purok from being saved:</h2>
+
+      <ul>
+        <% barangay_purok.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= hidden_field_tag "barangay_purok[barangay_id]", @barangay.id %>
+
+  <div class="mb-4">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "field" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :population %>
+    <%= form.number_field :population, class: "field" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.submit class: "btn-primary float-right" %>
+  </div>
+<% end %>

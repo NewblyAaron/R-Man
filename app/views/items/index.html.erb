@@ -1,0 +1,37 @@
+<div class="rounded-md bg-white shadow">
+  <div class="p-4 border-b-2 border-gray-200 flex flex-row justify-between items-center">
+    <h3 class="text-xl font-medium">Items</h3>
+
+    <div class="flex flex-row flex-wrap justify-end items-center space-x-4">
+      <%= link_to "New Item", new_item_path, class: "btn-primary" %>
+    </div>
+  </div>
+
+  <div class="flex flex-row flex-wrap space-x-8 p-4">
+    <% if @items.count > 0 %>
+      <table class="table-auto border-collapse border min-w-full text-left">
+        <thead>
+          <tr class="bg-gray-500 text-white">
+            <th>Item Name</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @items.each do |item| %>
+            <tr class="hover:bg-gray-200">
+              <td>
+              <%= link_to item.name, item, class: "block" %>
+              </td>
+
+              <td>
+                <%= link_to item.stock, item, class: "block" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>You do not have any items...</p>
+    <% end %>
+  </div>
+</div>

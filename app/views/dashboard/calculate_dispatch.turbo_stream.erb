@@ -1,0 +1,11 @@
+<%= turbo_stream.update "dispatch-calc" do %>
+  <ul>
+    <%= tag.li "Total Families: #{@barangay.get_total_families}" %>
+    <%= tag.li "Current Bundle Qty: #{@bundle.get_bundle_qty}"%>
+
+    <% needed = @barangay.get_total_families - @bundle.get_bundle_qty %>
+    <% if needed > 0 %>
+      <%= tag.li "Needed Bundle Qty: #{needed}" %>
+    <% end %>
+  </ul>
+<% end %>

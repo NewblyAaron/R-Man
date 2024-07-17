@@ -1,0 +1,42 @@
+<h1>dispatch thing</h1>
+
+<div data-controller="dispatch">
+  <div>
+    <div>
+      <%= label_tag "barangay" %>
+      <%= select_tag "barangay", options_for_select(Barangay.all.collect { |b| [b.name, b.id] }), data: { dispatch_target: "barangay" } %>
+    </div>
+
+    <div>
+      <%= label_tag "bundle" %>
+      <%= select_tag "bundle", options_for_select(Bundle.all.collect { |b| [b.name, b.id] }), data: { dispatch_target: "bundle" } %>
+    </div>
+
+    <div class="inline-flex" role="group">
+      <%= button_tag "Calculate", data: { action: "click->dispatch#calc" }, class: "btn-primary mr-4" %>
+      <%= button_tag "Load all", data: { action: "click->dispatch#dispatchLoad" }, class: "btn-primary mr-4" %>
+      <%= button_tag "Unload all", data: { action: "click->dispatch#dispatchUnload" }, class: "btn-secondary" %>
+    </div>
+  </div>
+
+  <%= turbo_frame_tag "dispatch-calc" %>
+
+  <%= turbo_frame_tag "dispatch-table" do %>
+    <table class="table-auto">
+      <tr>
+        <th>Vehicle Name</th>
+        <th>Capacity</th>
+        <th>Load</th>
+      </tr>
+      <% Vehicle.all.order("capacity DESC").each do |vehicle| %>
+        <tr>
+          <td><%= link_to vehicle.name, vehicle %></td>
+          <%= tag.td vehicle.capacity %>
+          <%= tag.td vehicle.vehicle_bundles.sum(:quantity) %>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+  <br />
+</div>

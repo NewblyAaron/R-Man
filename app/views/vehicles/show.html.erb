@@ -1,0 +1,9 @@
+<%= render @vehicle %>
+
+<div class="my-4">
+  <%= link_to "Show vehicle's bundle list", vehicle_bundles_path(vehicle_id: @vehicle.id), class: "btn-primary" %>
+  <%= link_to "Edit this vehicle", edit_vehicle_path(@vehicle), class: "btn-primary" %>
+  <%= link_to "Back to vehicles", vehicles_path, class: "btn-secondary" %>
+  <%= link_to "Destroy this bundle", @vehicle, class: "btn-danger",
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete Vehicle #{@vehicle.name}?" } %>
+</div>

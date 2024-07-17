@@ -1,0 +1,20 @@
+<div class="rounded-md bg-white shadow">
+  <div class="p-4 border-b-2 border-gray-200 flex flex-row justify-between items-center">
+    <h3 class="text-xl font-medium">Vehicle List</h3>
+
+    <%= link_to "New vehicle", new_vehicle_path, class: "btn-primary float-right" %>
+  </div>
+
+  <div class="flex flex-row flex-wrap space-x-8 p-4">
+    <% if @vehicles.count > 0 %>
+        <% @vehicles.each do |v| %>
+          <%= link_to(v, class: "rounded-lg hover:border-2 hover:border-sky-400") do %>
+            <%= render v %>
+          <% end %>
+        <% end %>
+    <% else %>
+        <p>You do not have any vehicles...</p>
+    <% end %>
+  </div>
+</div>
+

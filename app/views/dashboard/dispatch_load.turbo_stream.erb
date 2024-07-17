@@ -1,0 +1,18 @@
+<%= turbo_stream.update "dispatch-table" do %>
+    <%= render "layouts/alert", notice: "Loaded vehicles." %>
+
+    <table class="table-auto">
+      <tr>
+        <th>Vehicle Name</th>
+        <th>Capacity</th>
+        <th>Load</th>
+      </tr>
+      <% Vehicle.all.order("capacity DESC").each do |vehicle| %>
+        <tr>
+          <td><%= link_to vehicle.name, vehicle %></td>
+          <%= tag.td vehicle.capacity %>
+          <%= tag.td vehicle.vehicle_bundles.sum(:quantity) %>
+        </tr>
+      <% end %>
+    </table>
+<% end %>
